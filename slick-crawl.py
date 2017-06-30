@@ -1,14 +1,16 @@
 from bs4 import BeautifulSoup
-import urllib2
+import requests
 import sys
 
 #get slickdeals.net
 url = 'https://slickdeals.net'
-content = urllib2.urlopen(url).read()
+content = requests.get(url).text
 soup = BeautifulSoup(content, 'html.parser')
 
-frontpage = soup.find('div', class_='data-module-item')
+frontpage = soup.find_all('div', class_='priceLine')
 
-print(frontpage)
-#for item in result:
-#    print(item.prettify())
+print(frontpage[0])
+#print(frontpage[0].find_next_sibling('div', class_='listPrice'))
+
+#for item in frontepage:
+#    print("Title: {}".format())
