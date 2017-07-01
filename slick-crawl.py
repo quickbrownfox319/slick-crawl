@@ -7,10 +7,14 @@ url = 'https://slickdeals.net'
 content = requests.get(url).text
 soup = BeautifulSoup(content, 'html.parser')
 
-frontpage = soup.find_all('div', class_='priceLine')
+#frontpage = soup.find_all('div', class_='priceLine')
 
-print(frontpage[0])
-#print(frontpage[0].find_next_sibling('div', class_='listPrice'))
+frontpage = soup.find_all('div', class_='fpGridBox')
 
-#for item in frontepage:
-#    print("Title: {}".format())
+print(frontpage[0].attrs['fpGridBox'])
+
+
+'''
+for item in frontpage:
+    print(item.attrs['title'])
+'''
